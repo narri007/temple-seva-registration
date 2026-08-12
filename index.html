@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sree Lakshmi Narasimha Swamy Temple Seva Registration">
+  <title>Sree Lakshmi Narasimha Swamy Temple | Seva Registration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="top-ornament">॥ Om Namo Narayanaya ॥</div>
+    <div class="header-inner">
+      <div class="temple-photo-wrap">
+        <img src="assets/temple-photo.jpg" alt="Sree Lakshmi Narasimha Swamy Temple" class="temple-photo">
+      </div>
+      <div class="header-copy">
+        <p class="eyebrow">Daily Dhoopa Deepa Naivedhyam Seva</p>
+        <h1>Sree Lakshmi<br>Narasimha Swamy Temple</h1>
+        <p class="location">Rampuram Village, Kambadur Mandalam, Anantapur District, Andhra Pradesh - 515787</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro section-shell">
+      <div>
+        <span class="section-kicker">Seva Registration</span>
+        <h2>Offer your seva and be part of the temple's daily rituals</h2>
+        <p>Register your seva details below. Your contribution supports the daily Dhoopa, Deepa and Naivedhyam rituals of the temple.</p>
+      </div>
+      <div class="om-mark" aria-hidden="true">ॐ</div>
+    </section>
+
+    <section class="registration-card section-shell" id="registration">
+      <div class="card-heading">
+        <div>
+          <span class="section-kicker">Devotee Details</span>
+          <h2>Seva Registration Form</h2>
+        </div>
+        <span class="required-note"><span aria-hidden="true">*</span> Required</span>
+      </div>
+
+      <div id="formError" class="alert alert-error" role="alert" aria-live="polite" hidden></div>
+
+      <form id="registrationForm" novalidate>
+        <!-- Honeypot field: real users should leave this empty. -->
+        <div class="honeypot-field" aria-hidden="true">
+          <label for="website">Website</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="form-grid">
+          <div class="field field-full">
+            <label for="name">Devotee Name <span>*</span></label>
+            <input id="name" name="name" type="text" autocomplete="name" maxlength="100" placeholder="Enter your full name" required>
+            <small class="field-error" data-error-for="name"></small>
+          </div>
+
+          <div class="field">
+            <label for="gothram">Gothram <span>*</span></label>
+            <input id="gothram" name="gothram" type="text" maxlength="100" placeholder="Enter your gothram" required>
+            <small class="field-error" data-error-for="gothram"></small>
+          </div>
+
+          <div class="field">
+            <label for="dob">Date of Birth <span>*</span></label>
+            <input id="dob" name="dob" type="date" required>
+            <small class="field-error" data-error-for="dob"></small>
+          </div>
+
+          <div class="field field-full">
+            <label for="address">Address <span>*</span></label>
+            <textarea id="address" name="address" maxlength="500" rows="3" placeholder="Enter your full address" required></textarea>
+            <div class="field-meta"><small class="field-error" data-error-for="address"></small><small id="addressCount">0 / 500</small></div>
+          </div>
+
+          <div class="field">
+            <label for="phone">Mobile Number <span>*</span></label>
+            <input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" maxlength="14" placeholder="10 digit mobile number" required>
+            <small class="field-error" data-error-for="phone"></small>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div class="subsection-heading">
+            <div>
+              <h3>Family Members</h3>
+              <p>Add family members one by one. This section is optional.</p>
+            </div>
+            <span class="count-pill" id="familyCount">0 members</span>
+          </div>
+
+          <div id="familyMembers" class="family-list"></div>
+          <button type="button" class="secondary-button" id="addFamilyMember">
+            <span aria-hidden="true">＋</span> Add Family Member
+          </button>
+          <p class="hint">You can add up to 20 family members.</p>
+        </div>
+
+        <div class="form-section">
+          <div class="subsection-heading">
+            <div>
+              <h3>Select Seva <span class="required-star">*</span></h3>
+              <p>Select one or more seva options.</p>
+            </div>
+            <span class="count-pill" id="sevaCount">0 selected</span>
+          </div>
+
+          <div id="sevaOptions" class="seva-grid"></div>
+          <div class="selection-summary" id="sevaSummary" hidden></div>
+          <small class="field-error standalone-error" id="sevaError"></small>
+        </div>
+
+        <div class="form-section">
+          <div class="form-grid">
+            <div class="field">
+              <label for="amount">Contribution Amount (₹) <span>*</span></label>
+              <div class="input-with-prefix"><span>₹</span><input id="amount" name="amount" type="number" min="1" max="1000000" step="1" inputmode="numeric" placeholder="Enter amount" required></div>
+              <small class="field-error" data-error-for="amount"></small>
+            </div>
+
+            <div class="field field-full-mobile">
+              <label>Contribution Frequency <span>*</span></label>
+              <div id="frequencyOptions" class="frequency-grid" role="radiogroup" aria-label="Contribution frequency"></div>
+              <small class="field-error" data-error-for="frequency"></small>
+            </div>
+          </div>
+        </div>
+
+        <div class="consent-row">
+          <input id="consent" type="checkbox" required>
+          <label for="consent">I confirm that the information provided above is correct and may be used for temple seva registration purposes. <span>*</span></label>
+        </div>
+        <small class="field-error" data-error-for="consent"></small>
+
+        <button type="submit" class="primary-button" id="submitButton">
+          <span class="button-icon" aria-hidden="true">◉</span>
+          <span id="submitLabel">Register for Seva</span>
+        </button>
+      </form>
+    </section>
+
+    <section class="why-section section-shell">
+      <div class="center-heading">
+        <span class="section-kicker">Why Your Contribution Matters</span>
+        <h2>Your Seva Supports These Daily Rituals</h2>
+      </div>
+      <div class="benefit-grid">
+        <article class="benefit-card"><div class="benefit-icon">🪔</div><h3>Daily Dhoopa</h3><p>Divine fragrance helps create a sacred temple atmosphere.</p></article>
+        <article class="benefit-card"><div class="benefit-icon">🪔</div><h3>Daily Deepa</h3><p>Sacred light represents positivity, peace and devotion.</p></article>
+        <article class="benefit-card"><div class="benefit-icon">🍚</div><h3>Daily Naivedhyam</h3><p>Offering food to the Lord is an important part of daily worship.</p></article>
+        <article class="benefit-card"><div class="benefit-icon">🙏</div><h3>Your Seva</h3><p>Your contribution helps sustain these daily temple rituals.</p></article>
+      </div>
+    </section>
+
+    <section id="successSection" class="success-section section-shell" hidden>
+      <div class="success-card">
+        <div class="success-icon">✓</div>
+        <span class="section-kicker">Registration Complete</span>
+        <h2>Your Seva Registration Was Successful</h2>
+        <p>Thank you for supporting the temple seva.</p>
+        <div id="confirmationContent" class="confirmation-content"></div>
+        <div class="success-actions">
+          <button type="button" class="secondary-button" id="printConfirmation">Print / Save Confirmation</button>
+          <button type="button" class="primary-button compact" id="newRegistration">Register Another Devotee</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-om">ॐ</div>
+    <h2>Sree Lakshmi Narasimha Swamy Temple</h2>
+    <p>May Lord Narasimha Swamy bless you and your family with health, happiness, and prosperity.</p>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
