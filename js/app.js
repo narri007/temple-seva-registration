@@ -46,7 +46,7 @@
       <label class="frequency-card">
         <input type="radio" name="frequency" value="${escapeHtml(frequency)}" ${index === 0 ? "" : ""}>
         <span class="frequency-card-inner">
-          <span class="frequency-icon" aria-hidden="true">▦</span>
+          <span class="frequency-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="6" width="24" height="22" rx="2"/><path d="M4 12h24M10 3v6M22 3v6"/><g fill="currentColor" stroke="none"><rect x="8" y="15" width="3" height="3"/><rect x="14.5" y="15" width="3" height="3"/><rect x="21" y="15" width="3" height="3"/><rect x="8" y="21" width="3" height="3"/><rect x="14.5" y="21" width="3" height="3"/><rect x="21" y="21" width="3" height="3"/></g></svg></span>
           <span>${escapeHtml(frequency)}</span>
         </span>
       </label>
@@ -333,7 +333,7 @@
       </dl>
     `;
 
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    $("#successSection").scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   function startNewRegistration() {
@@ -347,13 +347,13 @@
     $("#successSection").hidden = true;
     $("#registration").hidden = false;
     updateAddressCount();
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    $("#registration").scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   function setSubmitting(submitting) {
     const button = $("#submitButton");
     button.disabled = submitting;
-    $("#submitLabel").textContent = submitting ? "Registering..." : "Register for Seva";
+    $("#submitLabel").textContent = submitting ? "Saving..." : "Save Registration";
   }
 
   function setFieldError(field, message) {
