@@ -57,48 +57,36 @@ img { max-width: 100%; }
 
 .header-main {
   display: grid;
-  grid-template-columns: 220px minmax(0, 1fr) 190px;
+  grid-template-columns: 200px minmax(0, 1fr) 200px;
   align-items: center;
   gap: 16px;
   max-width: 1000px;
   margin: 0 auto;
 }
 
-.temple-photo-wrap {
-  width: 210px;
-  height: 210px;
-  padding: 6px;
+/* Both header photos sit in matching gold-rimmed oval frames */
+.temple-photo-wrap,
+.deity-wrap {
+  width: 180px;
+  height: 236px;
+  padding: 5px;
   border: 3px solid var(--gold);
   border-radius: 50%;
   background: #fff;
-  box-shadow: 0 6px 18px rgba(92, 7, 10, .15);
+  box-shadow: 0 0 0 4px var(--cream), 0 0 0 5px rgba(201, 146, 22, .45), 0 8px 20px rgba(92, 7, 10, .18);
   justify-self: center;
   overflow: hidden;
 }
-.temple-photo {
+.temple-photo,
+.deity-image {
   width: 100%;
   height: 100%;
   display: block;
   object-fit: cover;
   border-radius: 50%;
-  transform: scale(1.12);
 }
-
-.deity-wrap {
-  width: 185px;
-  height: 220px;
-  justify-self: center;
-}
-.deity-image {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: contain;
-  mix-blend-mode: multiply;
-  /* fades the image edges into the cream background */
-  -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 52%, #000 72%, transparent 100%);
-  mask-image: radial-gradient(ellipse 50% 50% at 50% 52%, #000 72%, transparent 100%);
-}
+.temple-photo { object-position: 50% 45%; }
+.deity-image { object-position: 50% 22%; }
 
 .header-copy { text-align: center; min-width: 0; }
 
@@ -318,7 +306,7 @@ textarea { resize: vertical; min-height: 84px; }
 }
 .member-card-header { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 10px; }
 .member-card-header h4 { margin: 0; color: var(--maroon); font-size: 15px; }
-.member-grid { display: grid; grid-template-columns: 2fr 1.4fr .8fr; gap: 0 12px; }
+.member-grid { display: grid; grid-template-columns: 1.6fr 1.2fr 1.2fr; gap: 0 12px; }
 .member-grid label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 4px; }
 .member-grid label span { color: #c62828; }
 .member-grid input, .member-grid select { padding: 9px 12px; }
@@ -590,9 +578,8 @@ textarea { resize: vertical; min-height: 84px; }
 /* ---------- Responsive ---------- */
 
 @media (max-width: 900px) {
-  .header-main { grid-template-columns: 170px minmax(0, 1fr) 150px; }
-  .temple-photo-wrap { width: 165px; height: 165px; }
-  .deity-wrap { width: 145px; height: 175px; }
+  .header-main { grid-template-columns: 160px minmax(0, 1fr) 160px; }
+  .temple-photo-wrap, .deity-wrap { width: 150px; height: 196px; }
   .form-row { grid-template-columns: 210px minmax(0, 1fr); }
   .benefit-strip { grid-template-columns: repeat(2, 1fr); row-gap: 20px; }
   .benefit:nth-child(3) { border-left: 0; padding-left: 0; }
@@ -603,8 +590,7 @@ textarea { resize: vertical; min-height: 84px; }
   .header-arch { border-radius: 50% 50% 0 0 / 34px 34px 0 0; padding: 18px 16px 16px; }
   .header-main { grid-template-columns: 1fr 1fr; gap: 10px; }
   .header-copy { grid-column: 1 / -1; grid-row: 2; }
-  .temple-photo-wrap { width: 130px; height: 130px; }
-  .deity-wrap { width: 120px; height: 145px; }
+  .temple-photo-wrap, .deity-wrap { width: 124px; height: 162px; }
   .registration-title { gap: 8px; }
   .title-flourish { font-size: 11px; }
   .location-pill { padding: 8px 14px; font-size: 13px; border-radius: 14px; }
@@ -617,8 +603,7 @@ textarea { resize: vertical; min-height: 84px; }
   .row-note { min-height: 0; }
   .seva-grid { grid-template-columns: 1fr; gap: 10px; }
   .frequency-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .member-grid { grid-template-columns: 1fr 1fr; }
-  .member-grid .field:first-child { grid-column: 1 / -1; }
+  .member-grid { grid-template-columns: 1fr; }
   .primary-button { font-size: 18px; }
   .success-actions { flex-direction: column; }
   .success-actions .primary-button, .success-actions .secondary-button { width: 100%; }
@@ -632,8 +617,7 @@ textarea { resize: vertical; min-height: 84px; }
 }
 
 @media (max-width: 380px) {
-  .temple-photo-wrap { width: 112px; height: 112px; }
-  .deity-wrap { width: 100px; height: 125px; }
+  .temple-photo-wrap, .deity-wrap { width: 108px; height: 140px; }
   .header-copy h1 { font-size: 24px; }
 }
 

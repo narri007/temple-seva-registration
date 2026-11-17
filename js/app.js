@@ -4,7 +4,9 @@
   const state = {
     familyMembers: [],
     selectedSevas: new Set(),
-    selectedFrequency: ""
+    selectedFrequency: "",
+    // Kept across retries so the backend can recognise a repeat of the same registration.
+    submissionId: ""
   };
 
   const $ = (selector, root = document) => root.querySelector(selector);
@@ -78,7 +80,7 @@
       name: "",
       relation: "",
       otherRelation: "",
-      age: ""
+      dob: ""
     });
 
     renderFamilyMembers();
@@ -117,9 +119,9 @@
             <small class="field-error" data-member-error="relation"></small>
           </div>
           <div class="field">
-            <label for="member-${index}-age">Age <span>*</span></label>
-            <input id="member-${index}-age" data-member-field="age" type="number" min="0" max="120" step="1" inputmode="numeric" value="${escapeAttr(member.age)}" placeholder="Age">
-            <small class="field-error" data-member-error="age"></small>
+            <label for="member-${index}-dob">Date of Birth <span>*</span></label>
+            <input id="member-${index}-dob" data-member-field="dob" type="date" min="${minDob()}" max="${todayIso()}" value="${escapeAttr(member.dob)}">
+            <small class="field-error" data-member-error="dob"></small>
           </div>
           ${member.relation === "Other" ? `
             <div class="field field-full">
@@ -228,10 +230,10 @@
 
     state.familyMembers.forEach((member, index) => {
       const card = $(`.family-member-card[data-member-id="${CSS.escape(member.id)}"]`);
-      if (!member.name.trim()) { memberError(card, "name", "Enter the member name."); valid = false; }
+      if (member.name.trim().length < 2) { memberError(card, "name", "Enter the member name."); valid = false; }
       if (!member.relation) { memberError(card, "relation", "Select a relation."); valid = false; }
-      if (!Number.isInteger(Number(member.age)) || Number(member.age) < 0 || Number(member.age) > 120) {
-        memberError(card, "age", "Enter an age from 0 to 120."); valid = false;
+      if (!member.dob || member.dob > todayIso() || member.dob < minDob()) {
+        memberError(card, "dob", "Enter a valid date of birth."); valid = false;
       }
       if (member.relation === "Other" && !member.otherRelation.trim()) {
         memberError(card, "otherRelation", "Please specify the relation."); valid = false;
@@ -252,8 +254,12 @@
 
     if (!validateForm()) return;
 
+    if (!state.submissionId) {
+      state.submissionId = crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`;
+    }
+
     const payload = {
-      submissionId: crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`,
+      submissionId: state.submissionId,
       website: $("#website").value.trim(),
       name: $("#name").value.trim(),
       gothram: $("#gothram").value.trim(),
@@ -264,7 +270,9 @@
         name: member.name.trim(),
         relation: member.relation,
         otherRelation: member.relation === "Other" ? member.otherRelation.trim() : "",
-        age: Number(member.age)
+        dob: member.dob,
+        // Still sent so the current backend (which expects an age) keeps working.
+        age: ageFromDob(member.dob)
       })),
       selectedSevas: [...state.selectedSevas],
       contributionAmount: Number($("#amount").value),
@@ -292,14 +300,21 @@
       const result = await response.json();
 
       if (!result.success) {
-        throw new Error(result.message || "Registration could not be completed.");
+        const serverError = new Error(result.message || "Registration could not be completed.");
+        serverError.fromServer = true;
+        throw serverError;
       }
 
+      state.submissionId = "";
       showSuccess(result.registration);
     } catch (error) {
       console.error("Registration error:", error);
       if (error.message === "API_NOT_CONFIGURED") {
         showFormError("The registration service is not configured yet. Please add the Google Apps Script Web App URL in js/config.js.");
+      } else if (error.fromServer) {
+        // The backend checked the details and explained what is wrong.
+        state.submissionId = "";
+        showFormError(error.message);
       } else {
         showFormError("We could not complete the registration right now. Please check your internet connection and try again.");
       }
@@ -341,6 +356,7 @@
     state.familyMembers = [];
     state.selectedSevas.clear();
     state.selectedFrequency = "";
+    state.submissionId = "";
     renderFamilyMembers();
     updateSevaUI();
     clearErrors();
@@ -389,6 +405,31 @@
     return String(value ?? "").replace(/[&<>"']/g, char => ({
       "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;"
     }[char]));
+  }
+
+  // Dates as YYYY-MM-DD in local time, the format <input type="date"> uses.
+  function isoDate(date) {
+    const pad = n => String(n).padStart(2, "0");
+    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+  }
+
+  function todayIso() {
+    return isoDate(new Date());
+  }
+
+  // Oldest allowed date of birth: 120 years ago.
+  function minDob() {
+    const date = new Date();
+    date.setFullYear(date.getFullYear() - 120);
+    return isoDate(date);
+  }
+
+  function ageFromDob(dob) {
+    const [year, month, day] = dob.split("-").map(Number);
+    const today = new Date();
+    let age = today.getFullYear() - year;
+    if (today.getMonth() + 1 < month || (today.getMonth() + 1 === month && today.getDate() < day)) age -= 1;
+    return age;
   }
 
   function escapeAttr(value) {
