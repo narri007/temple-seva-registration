@@ -1,7 +1,7 @@
 // Frontend configuration.
 // Replace API_URL with your deployed Google Apps Script Web App URL in Step 8.
 const APP_CONFIG = {
-  API_URL = "https://script.google.com/macros/s/AKfycbyIhLbdVdfDwQDC1NLtYHNrXEy-oJcpTZeU39FGYl2P0jaYZho7mMEzr-PZ1VRCQG2P/exec",
+  API_URL: "https://script.google.com/macros/s/AKfycbyIhLbdVdfDwQDC1NLtYHNrXEy-oJcpTZeU39FGYl2P0jaYZho7mMEzr-PZ1VRCQG2P/exec",
   TEMPLE_NAME: "Sree Lakshmi Narasimha Swamy Temple",
   MAX_FAMILY_MEMBERS: 20,
   MAX_CONTRIBUTION: 1000000,
