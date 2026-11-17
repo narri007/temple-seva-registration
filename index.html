@@ -7,43 +7,43 @@
   <title>Sree Lakshmi Narasimha Swamy Temple | Seva Registration</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Noto+Sans:wght@400;500;600;700&family=Roboto+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <header class="site-header">
-    <div class="top-ornament">॥ Om Namo Narayanaya ॥</div>
-    <div class="header-inner">
-      <div class="temple-photo-wrap">
-        <img src="assets/temple-photo.jpg" alt="Sree Lakshmi Narasimha Swamy Temple" class="temple-photo">
+    <div class="header-arch">
+      <div class="header-main">
+        <div class="temple-photo-wrap">
+          <img src="assets/temple-photo.jpg" alt="Sree Lakshmi Narasimha Swamy Temple" class="temple-photo">
+        </div>
+
+        <div class="header-copy">
+          <p class="header-topline"><span aria-hidden="true">❈</span> || Om Namo Narayanaya ||</p>
+          <h1><span>Sree Lakshmi</span><br><span>Narasimha Swamy Temple</span></h1>
+          <div class="header-divider" aria-hidden="true"><span></span></div>
+          <p class="header-seva">Daily Dhoopa <b>Deepa</b> Naivedhyam Seva</p>
+          <p class="registration-title">
+            <span class="title-flourish" aria-hidden="true">⊱❋⊰</span>
+            Registration Form
+            <span class="title-flourish" aria-hidden="true">⊱❋⊰</span>
+          </p>
+        </div>
+
+        <div class="deity-wrap">
+          <img src="assets/narasimha-deity.jpg" alt="Lord Lakshmi Narasimha Swamy" class="deity-image">
+        </div>
       </div>
-      <div class="header-copy">
-        <p class="eyebrow">Daily Dhoopa Deepa Naivedhyam Seva</p>
-        <h1>Sree Lakshmi<br>Narasimha Swamy Temple</h1>
-        <p class="location">Rampuram Village, Kambadur Mandalam, Anantapur District, Andhra Pradesh - 515787</p>
-      </div>
+
+      <p class="location-pill">
+        <svg class="location-pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
+        Rampuram Village, Kambadur Mandalam, Anantapur District, Andhra Pradesh - 515787
+      </p>
     </div>
   </header>
 
-  <main>
-    <section class="intro section-shell">
-      <div>
-        <span class="section-kicker">Seva Registration</span>
-        <h2>Offer your seva and be part of the temple's daily rituals</h2>
-        <p>Register your seva details below. Your contribution supports the daily Dhoopa, Deepa and Naivedhyam rituals of the temple.</p>
-      </div>
-      <div class="om-mark" aria-hidden="true">ॐ</div>
-    </section>
-
-    <section class="registration-card section-shell" id="registration">
-      <div class="card-heading">
-        <div>
-          <span class="section-kicker">Devotee Details</span>
-          <h2>Seva Registration Form</h2>
-        </div>
-        <span class="required-note"><span aria-hidden="true">*</span> Required</span>
-      </div>
-
+  <main class="page">
+    <section class="registration-card" id="registration" aria-label="Seva registration form">
       <div id="formError" class="alert alert-error" role="alert" aria-live="polite" hidden></div>
 
       <form id="registrationForm" novalidate>
@@ -52,116 +52,122 @@
           <label for="website">Website</label>
           <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
         </div>
-        <div class="form-grid">
-          <div class="field field-full">
-            <label for="name">Devotee Name <span>*</span></label>
+
+        <div class="form-row">
+          <div class="row-label"><span class="step">1</span><label for="name">Name <span class="req">*</span></label></div>
+          <div class="row-input">
             <input id="name" name="name" type="text" autocomplete="name" maxlength="100" placeholder="Enter your full name" required>
             <small class="field-error" data-error-for="name"></small>
           </div>
+        </div>
 
-          <div class="field">
-            <label for="gothram">Gothram <span>*</span></label>
+        <div class="form-row">
+          <div class="row-label"><span class="step">2</span><label for="gothram">Gothram <span class="req">*</span></label></div>
+          <div class="row-input">
             <input id="gothram" name="gothram" type="text" maxlength="100" placeholder="Enter your gothram" required>
             <small class="field-error" data-error-for="gothram"></small>
           </div>
+        </div>
 
-          <div class="field">
-            <label for="dob">Date of Birth <span>*</span></label>
+        <div class="form-row">
+          <div class="row-label"><span class="step">3</span><label for="dob">Date of Birth <span class="req">*</span></label></div>
+          <div class="row-input">
             <input id="dob" name="dob" type="date" required>
             <small class="field-error" data-error-for="dob"></small>
           </div>
+        </div>
 
-          <div class="field field-full">
-            <label for="address">Address <span>*</span></label>
+        <div class="form-row">
+          <div class="row-label"><span class="step">4</span><label for="address">Address <span class="req">*</span></label></div>
+          <div class="row-input">
             <textarea id="address" name="address" maxlength="500" rows="3" placeholder="Enter your full address" required></textarea>
             <div class="field-meta"><small class="field-error" data-error-for="address"></small><small id="addressCount">0 / 500</small></div>
           </div>
+        </div>
 
-          <div class="field">
-            <label for="phone">Mobile Number <span>*</span></label>
-            <input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" maxlength="14" placeholder="10 digit mobile number" required>
+        <div class="form-row">
+          <div class="row-label"><span class="step">5</span><label for="phone">Phone Number <span class="req">*</span></label></div>
+          <div class="row-input">
+            <div class="input-with-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2Z"/></svg>
+              <input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" maxlength="10" placeholder="Enter your 10 digit mobile number" required>
+            </div>
             <small class="field-error" data-error-for="phone"></small>
           </div>
         </div>
 
-        <div class="form-section">
-          <div class="subsection-heading">
-            <div>
-              <h3>Family Members</h3>
-              <p>Add family members one by one. This section is optional.</p>
-            </div>
-            <span class="count-pill" id="familyCount">0 members</span>
+        <div class="form-row">
+          <div class="row-label">
+            <span class="step">6</span>
+            <span class="label-text">Family Members <small class="optional">(optional)</small></span>
           </div>
-
-          <div id="familyMembers" class="family-list"></div>
-          <button type="button" class="secondary-button" id="addFamilyMember">
-            <span aria-hidden="true">＋</span> Add Family Member
-          </button>
-          <p class="hint">You can add up to 20 family members.</p>
+          <div class="row-input">
+            <div class="row-note">
+              <span>Add family members one by one.</span>
+              <span class="count-pill" id="familyCount">0 members</span>
+            </div>
+            <div id="familyMembers" class="family-list"></div>
+            <button type="button" class="secondary-button" id="addFamilyMember">
+              <span aria-hidden="true">＋</span> Add Family Member
+            </button>
+            <p class="hint">You can add up to 20 family members.</p>
+          </div>
         </div>
 
-        <div class="form-section">
-          <div class="subsection-heading">
-            <div>
-              <h3>Select Seva <span class="required-star">*</span></h3>
-              <p>Select one or more seva options.</p>
-            </div>
+        <div class="form-row form-row-stacked">
+          <div class="row-label">
+            <span class="step">7</span>
+            <span class="label-text">Select Seva <span class="req">*</span></span>
             <span class="count-pill" id="sevaCount">0 selected</span>
           </div>
-
-          <div id="sevaOptions" class="seva-grid"></div>
-          <div class="selection-summary" id="sevaSummary" hidden></div>
-          <small class="field-error standalone-error" id="sevaError"></small>
+          <div class="row-input">
+            <div id="sevaOptions" class="seva-grid"></div>
+            <div class="selection-summary" id="sevaSummary" hidden></div>
+            <small class="field-error" id="sevaError"></small>
+          </div>
         </div>
 
-        <div class="form-section">
-          <div class="form-grid">
-            <div class="field">
-              <label for="amount">Contribution Amount (₹) <span>*</span></label>
-              <div class="input-with-prefix"><span>₹</span><input id="amount" name="amount" type="number" min="1" max="1000000" step="1" inputmode="numeric" placeholder="Enter amount" required></div>
-              <small class="field-error" data-error-for="amount"></small>
+        <div class="form-row">
+          <div class="row-label"><span class="step">8</span><label for="amount">Contribution Amount (₹) <span class="req">*</span></label></div>
+          <div class="row-input">
+            <div class="input-with-icon">
+              <span class="rupee" aria-hidden="true">₹</span>
+              <input id="amount" name="amount" type="number" min="1" max="1000000" step="1" inputmode="numeric" placeholder="Enter contribution amount" required>
             </div>
+            <small class="field-error" data-error-for="amount"></small>
+          </div>
+        </div>
 
-            <div class="field field-full-mobile">
-              <label>Contribution Frequency <span>*</span></label>
-              <div id="frequencyOptions" class="frequency-grid" role="radiogroup" aria-label="Contribution frequency"></div>
-              <small class="field-error" data-error-for="frequency"></small>
-            </div>
+        <div class="form-row form-row-stacked">
+          <div class="row-label"><span class="step">9</span><span class="label-text" id="frequencyLabel">Contribution Frequency <span class="req">*</span></span></div>
+          <div class="row-input">
+            <div id="frequencyOptions" class="frequency-grid" role="radiogroup" aria-labelledby="frequencyLabel"></div>
+            <small class="field-error" data-error-for="frequency"></small>
           </div>
         </div>
 
         <div class="consent-row">
           <input id="consent" type="checkbox" required>
-          <label for="consent">I confirm that the information provided above is correct and may be used for temple seva registration purposes. <span>*</span></label>
+          <label for="consent">I confirm that the information provided above is correct and may be used for temple seva registration purposes. <span class="req">*</span></label>
         </div>
-        <small class="field-error" data-error-for="consent"></small>
+        <small class="field-error consent-error" data-error-for="consent"></small>
 
         <button type="submit" class="primary-button" id="submitButton">
-          <span class="button-icon" aria-hidden="true">◉</span>
-          <span id="submitLabel">Register for Seva</span>
+          <svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M17 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7l-4-4Zm-5 16a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm3-10H5V5h10v4Z"/></svg>
+          <span id="submitLabel">Save Registration</span>
         </button>
       </form>
     </section>
 
-    <section class="why-section section-shell">
-      <div class="center-heading">
-        <span class="section-kicker">Why Your Contribution Matters</span>
-        <h2>Your Seva Supports These Daily Rituals</h2>
-      </div>
-      <div class="benefit-grid">
-        <article class="benefit-card"><div class="benefit-icon">🪔</div><h3>Daily Dhoopa</h3><p>Divine fragrance helps create a sacred temple atmosphere.</p></article>
-        <article class="benefit-card"><div class="benefit-icon">🪔</div><h3>Daily Deepa</h3><p>Sacred light represents positivity, peace and devotion.</p></article>
-        <article class="benefit-card"><div class="benefit-icon">🍚</div><h3>Daily Naivedhyam</h3><p>Offering food to the Lord is an important part of daily worship.</p></article>
-        <article class="benefit-card"><div class="benefit-icon">🙏</div><h3>Your Seva</h3><p>Your contribution helps sustain these daily temple rituals.</p></article>
-      </div>
-    </section>
-
-    <section id="successSection" class="success-section section-shell" hidden>
+    <section id="successSection" class="success-section" hidden>
       <div class="success-card">
-        <div class="success-icon">✓</div>
-        <span class="section-kicker">Registration Complete</span>
-        <h2>Your Seva Registration Was Successful</h2>
-        <p>Thank you for supporting the temple seva.</p>
+        <div class="success-banner">
+          <span class="success-icon" aria-hidden="true">✓</span>
+          <div>
+            <strong>Your registration was saved successfully.</strong>
+            <span>Thank you for your support to the temple seva.</span>
+          </div>
+        </div>
         <div id="confirmationContent" class="confirmation-content"></div>
         <div class="success-actions">
           <button type="button" class="secondary-button" id="printConfirmation">Print / Save Confirmation</button>
@@ -169,13 +175,39 @@
         </div>
       </div>
     </section>
+
+    <section class="why-section" aria-labelledby="whyHeading">
+      <h2 class="ornate-heading" id="whyHeading"><span>Why Your Contribution Matters</span></h2>
+      <div class="benefit-strip">
+        <article class="benefit"><div class="benefit-icon" aria-hidden="true">🪔</div><div><h3>Daily Dhoopa</h3><p>Divine fragrance purifies the temple</p></div></article>
+        <article class="benefit"><div class="benefit-icon" aria-hidden="true">🪔</div><div><h3>Daily Deepa</h3><p>Sacred light brings positivity &amp; peace</p></div></article>
+        <article class="benefit"><div class="benefit-icon" aria-hidden="true">🍚</div><div><h3>Daily Naivedhyam</h3><p>Offering food to the Lord brings blessings</p></div></article>
+        <article class="benefit"><div class="benefit-icon" aria-hidden="true">🙏</div><div><h3>Your Seva</h3><p>Your contribution sustains these daily rituals</p></div></article>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
-    <div class="footer-om">ॐ</div>
+    <svg class="footer-ornament left" viewBox="0 0 40 150" aria-hidden="true"><use href="#vine"/></svg>
+    <svg class="footer-ornament right" viewBox="0 0 40 150" aria-hidden="true"><use href="#vine"/></svg>
+    <div class="footer-om" aria-hidden="true">ॐ</div>
+    <p class="footer-thanks">Thank you for being a part of this divine seva.</p>
     <h2>Sree Lakshmi Narasimha Swamy Temple</h2>
     <p>May Lord Narasimha Swamy bless you and your family with health, happiness, and prosperity.</p>
   </footer>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="vine" viewBox="0 0 40 150">
+      <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+        <path d="M20 4v142"/>
+        <path d="M20 24c-10-2-14-10-10-16 6 2 9 9 10 16Zm0 0c10-2 14-10 10-16-6 2-9 9-10 16Z"/>
+        <path d="M20 58c-12 0-17-10-12-17 7 3 11 10 12 17Zm0 0c12 0 17-10 12-17-7 3-11 10-12 17Z"/>
+        <path d="M20 94c-12 0-17-10-12-17 7 3 11 10 12 17Zm0 0c12 0 17-10 12-17-7 3-11 10-12 17Z"/>
+        <path d="M20 128c-10-2-14-10-10-16 6 2 9 9 10 16Zm0 0c10-2 14-10 10-16-6 2-9 9-10 16Z"/>
+        <circle cx="20" cy="40" r="3"/><circle cx="20" cy="76" r="3"/><circle cx="20" cy="110" r="3"/>
+      </g>
+    </symbol>
+  </svg>
 
   <script src="js/config.js"></script>
   <script src="js/app.js"></script>
